@@ -1,0 +1,188 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: white;
+}
+
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.btn-contato{
+    margin-bottom: 10px;
+}
+
+header .btn-contato button, .hero-site button, .terreno button{
+    font-size: 18px;
+    background-color: transparent;
+    border: 0.5px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: .5s;
+}
+
+header .btn-contato button:hover, .hero-site button:hover, .terreno button:hover{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+/* Estilo do Header */
+header{
+    width: 100%;
+    padding: 40px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: -20px;
+}
+
+header .interface{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img{
+    max-width: 40px;
+    margin: 0 130px;
+}
+
+/* Estilo do menu dinamico */
+
+header .logo img{
+    margin: 1;
+}
+
+header.rolar{
+    background-color: white;
+    padding: 15px 0;
+    z-index: 3;
+    transition: 0.5s;
+}
+
+header.rolar .menu-desktop nav ul li a{
+    color: black;
+}
+
+header.rolar .btn-contato button{
+    border: 1px solid black;
+    color: black;
+}
+
+header.rolar .btn-contato button:hover{
+    background-color: black;
+    color: white;
+}
+
+
+/* --------------------------------- */
+
+header .menu-desktop nav ul{
+    list-style-type: none;
+}
+
+header .menu-desktop nav ul li{
+    display: inline-block;
+    margin: 0 40px;
+}
+
+header .menu-desktop nav ul li a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.menu-desktop nav a:hover{
+    transform: scale(1.05);
+}
+
+header .btn-contato button{
+    width: 140px;
+    height: 50px;
+    margin: 0 130px;
+}
+
+
+
+/* Estilos do container de login */
+.login-aba {
+    display: flex;
+    justify-content: center; /* Alinha o conteúdo ao centro horizontalmente */
+    align-items: center;     /* Alinha o conteúdo ao centro verticalmente */
+    height: 100vh;           /* Preenche toda a altura da tela */
+    background-color: #fafafa;
+    background-image: url(../images/Captura\ de\ tela\ 2024-11-30\ 023810.png.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;
+    max-width: 400px; /* Largura máxima do formulário */
+}
+
+/* Estilo para o título */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos para os campos de input */
+.input-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px; /* Espaçamento entre o label e o input */
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Foco no campo de input */
+input:focus {
+    outline: none;
+    border-color: #daa520; /* Cor dourada para o foco */
+    background-color: #fff;
+}
+
+/* Estilo do botão de login */
+button.login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #0ed128; /* Cor de fundo dourada */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Efeito hover do botão */
+button.login-btn:hover {
+    background-color: #0ed128; /* Cor mais escura no hover */
+}

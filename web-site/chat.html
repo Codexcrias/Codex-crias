@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Estilo WhatsApp</title>
+    <link rel="stylesheet" href="css/chat.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="js/menu.js" defer></script>
+</head>
+<body>
+
+<header id="header">
+    <div class="interface">
+        <section class="logo">
+            <img src="images/burn.png" alt="Logotipo do site">
+        </section>
+
+        <section class="menu-desktop">
+            <nav>
+                <ul>
+                    <li><a href="logado.html">Inicio</a></li>
+                    <li><a href="chat.html">Chat Codex</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="btn-contato">
+            <a href="perfil.html">
+                <button>Perfil</button>
+            </a>
+        </section>
+    </div>
+</header>
+
+<section>
+    <div class="chat-container">
+        <div id="chat-window">
+            <div id="output"></div> <!-- Área onde as mensagens aparecerão -->
+            <div id="feedback"></div> <!-- Feedback de carregamento ou outras interações -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="input" placeholder="Digite sua mensagem..." autofocus>
+            <button id="send"><i class="bi bi-send"></i> Enviar</button>
+        </div>
+    </div>
+</section>
+
+<script src="js/script.js"></script>
+
+<footer>
+    <div class="interface">
+        <section class="top-footer">
+            <a href="#"><button><i class="bi bi-instagram"></i></button></a>
+            <a href="#"><button><i class="bi bi-facebook"></i></button></a>
+            <a href="#"><button><i class="bi bi-tiktok"></i></button></a>
+        </section>
+
+        <section class="middle-footer">
+            <a href="#">Suporte</a>
+            <a href="#">Informações</a>
+            <a href="#">Marketing</a>
+        </section>
+
+        <section class="bottom-footer">
+            <p>Projeto integrador Univag 2024/2 &copy; Todos os direitos Reservados</p>
+        </section>
+    </div>
+</footer>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    function atualizarGraficos() {
+        fetch('http://127.0.0.1:5000/desempenho/materia')
+            .then(response => response.json())
+            .then(data => {
+                Plotly.newPlot('grafico-desempenho', data.data, data.layout);
+            })
+            .catch(error => console.error('Erro ao carregar gráfico:', error));
+    }
+
+    function carregarFeedback(userId) {
+        fetch(`http://127.0.0.1:5000/feedback/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                const feedbackDiv = document.getElementById('feedback');
+                feedbackDiv.innerHTML = ''; // Limpa feedbacks antigos
+                data.forEach(item => {
+                    feedbackDiv.innerHTML += `
+                        <div class="feedback-item">
+                            <h3>Matéria: ${item.materia}</h3>
+                            <p>Acertos: ${item.acertos}</p>
+                            <p>Erros: ${item.erros}</p>
+                            <p><strong>${item.mensagem}</strong></p>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Erro ao carregar feedback:', error));
+    }
+
+    setInterval(() => {
+        atualizarGraficos();
+        carregarFeedback(1); // Ajuste o ID do usuário conforme necessário
+    }, 30000);
+
+    window.onload = function() {
+        atualizarGraficos();
+        carregarFeedback(1);
+    };
+</script>
+
+</body>
+</html>
